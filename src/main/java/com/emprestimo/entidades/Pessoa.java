@@ -10,6 +10,9 @@ public class Pessoa {
     private String rg;
     private Double renda;
     private String senha;
+
     private List<Endereco> endereco;
+
+
 
 }
