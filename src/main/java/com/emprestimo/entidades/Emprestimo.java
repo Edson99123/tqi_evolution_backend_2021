@@ -17,8 +17,14 @@ public class Emprestimo {
     private Date dataPrimeiraParcela;
     private int quantidadeParcelas;
 
+    @ManyToOne
+    @JoinColumn(name = "idPessoa")
+    private Pessoa pessoa;
+
     @OneToMany(mappedBy =  "emprestimo")
     private List<ParcelasEmprestimo> parcelasEmprestimos = new ArrayList<>();
+
+
 
 
     /**Construtor sem args*/

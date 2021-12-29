@@ -5,7 +5,9 @@ import com.emprestimo.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -34,7 +36,9 @@ public class PessoaResource {
     @PostMapping
     public ResponseEntity<Pessoa> insert(@RequestBody Pessoa obj){
         obj = service.insert(obj);
-        return ResponseEntity.ok().body(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
+                .buildAndExpand(obj.getIdPessoa()).toUri();
+        return ResponseEntity.created(uri).body(obj);
     }
 
 

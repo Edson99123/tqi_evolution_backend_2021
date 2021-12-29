@@ -19,6 +19,9 @@ public class Pessoa {
     private Double renda;
     private String senha;
 
+    @OneToMany(mappedBy = "pessoa")
+    private List<Emprestimo> emprestimos = new ArrayList<>();
+
     @OneToMany(mappedBy =  "pessoa")
     private List<Endereco> enderecos  = new ArrayList<>();
 

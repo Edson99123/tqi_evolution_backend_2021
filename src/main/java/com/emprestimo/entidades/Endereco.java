@@ -10,6 +10,7 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEndereco;
+
     private String uf;
     private String cidade;
     private String bairro;
