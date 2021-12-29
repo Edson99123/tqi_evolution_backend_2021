@@ -1,21 +1,32 @@
 package com.emprestimo.entidades;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name  = "tb_endereco")
 public class Endereco {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEndereco;
     private String uf;
     private String cidade;
     private String bairro;
     private String rua;
     private int numero;
+
+    @ManyToOne
+    @JoinColumn(name = "idPessoa")
     private Pessoa pessoa;
 
-
+    /**
+     * Construtor sem argumentos*/
     public Endereco() {
-
     }
 
+    /**
+     * Construtor com argumentos*/
     public Endereco(Long idEndereco, String uf, String cidade, String bairro, String rua, int numero, Pessoa pessoa) {
         this.idEndereco = idEndereco;
         this.uf = uf;
