@@ -19,7 +19,7 @@ public class Pessoa {
     private Double renda;
     private String senha;
 
-    @OneToMany(mappedBy =  "endereco")
+    @OneToMany(mappedBy =  "pessoa")
     private List<Endereco> enderecos  = new ArrayList<>();
 
     /**

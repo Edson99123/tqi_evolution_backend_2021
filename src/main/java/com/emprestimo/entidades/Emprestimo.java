@@ -1,16 +1,25 @@
 package com.emprestimo.entidades;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_emprestimo")
 public class Emprestimo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmprestimo;
     private Double valorEmprestimo;
     private Date dataPrimeiraParcela;
     private int quantidadeParcelas;
-    private List<ParcelasEmprestimo> parcelasEmprestimos;
+
+    @OneToMany(mappedBy =  "emprestimo")
+    private List<ParcelasEmprestimo> parcelasEmprestimos = new ArrayList<>();
+
 
     /**Construtor sem args*/
     public Emprestimo() {

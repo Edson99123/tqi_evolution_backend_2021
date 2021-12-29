@@ -1,14 +1,22 @@
 package com.emprestimo.entidades;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_parcelaemprestimo")
 public class ParcelasEmprestimo {
     /**
      * Atributos da classe*/
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idParcela;
     private Date dataVencimento;
     private String observacao;
+
+    @ManyToOne
+    @JoinColumn(name = "idEmprestimo")
     private Emprestimo emprestimo;
 
 

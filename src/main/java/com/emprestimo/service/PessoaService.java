@@ -24,4 +24,12 @@ public class PessoaService {
         return obj.get();
     }
 
+    /**
+     *Metodo insert de pessoa*/
+    public Pessoa insert(Pessoa obj){
+        return repository.save(obj);
+    }
+
+
+
 }
