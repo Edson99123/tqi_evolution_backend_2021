@@ -19,7 +19,7 @@ public class Endereco {
 
     @ManyToOne
     @JoinColumn(name = "idPessoa")
-    private Pessoa pessoa;
+    private Pessoa pessoaEndereco;
 
     /**
      * Construtor sem argumentos*/
@@ -28,14 +28,14 @@ public class Endereco {
 
     /**
      * Construtor com argumentos*/
-    public Endereco(Long idEndereco, String uf, String cidade, String bairro, String rua, int numero, Pessoa pessoa) {
+    public Endereco(Long idEndereco, String uf, String cidade, String bairro, String rua, int numero, Pessoa pessoaEndereco) {
         this.idEndereco = idEndereco;
         this.uf = uf;
         this.cidade = cidade;
         this.bairro = bairro;
         this.rua = rua;
         this.numero = numero;
-        this.pessoa = pessoa;
+        this.pessoaEndereco = pessoaEndereco;
     }
 
     public Long getIdEndereco() {
@@ -87,11 +87,11 @@ public class Endereco {
     }
 
     public Pessoa getPessoa() {
-        return pessoa;
+        return pessoaEndereco;
     }
 
     public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+        this.pessoaEndereco = pessoa;
     }
 
     @Override
@@ -99,12 +99,12 @@ public class Endereco {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Endereco endereco = (Endereco) o;
-        return numero == endereco.numero && Objects.equals(idEndereco, endereco.idEndereco) && Objects.equals(uf, endereco.uf) && Objects.equals(cidade, endereco.cidade) && Objects.equals(bairro, endereco.bairro) && Objects.equals(rua, endereco.rua) && Objects.equals(pessoa, endereco.pessoa);
+        return numero == endereco.numero && Objects.equals(idEndereco, endereco.idEndereco) && Objects.equals(uf, endereco.uf) && Objects.equals(cidade, endereco.cidade) && Objects.equals(bairro, endereco.bairro) && Objects.equals(rua, endereco.rua) && Objects.equals(pessoaEndereco, endereco.pessoaEndereco);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idEndereco, uf, cidade, bairro, rua, numero, pessoa);
+        return Objects.hash(idEndereco, uf, cidade, bairro, rua, numero, pessoaEndereco);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class Endereco {
                 ", bairro='" + bairro + '\'' +
                 ", rua='" + rua + '\'' +
                 ", numero=" + numero +
-                ", pessoa=" + pessoa +
+                ", pessoa=" + pessoaEndereco +
                 '}';
     }
 }

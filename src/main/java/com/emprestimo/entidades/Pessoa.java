@@ -19,10 +19,10 @@ public class Pessoa {
     private Double renda;
     private String senha;
 
-    @OneToMany(mappedBy = "pessoa")
+    @OneToMany(mappedBy = "pessoaEmprestimo")
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
-    @OneToMany(mappedBy =  "pessoa")
+    @OneToMany(mappedBy =  "pessoaEndereco")
     private List<Endereco> enderecos  = new ArrayList<>();
 
     /**
@@ -32,7 +32,7 @@ public class Pessoa {
 
     /**
      * Construtor com argumentos*/
-    public Pessoa(long idPessoa, String nome, String email, String cpf, String rg, Double renda, String senha, List<Endereco> enderecos) {
+    public Pessoa(long idPessoa, String nome, String email, String cpf, String rg, Double renda, String senha, List<Emprestimo> emprestimos, List<Endereco> enderecos) {
         this.idPessoa = idPessoa;
         this.nome = nome;
         this.email = email;
@@ -40,6 +40,7 @@ public class Pessoa {
         this.rg = rg;
         this.renda = renda;
         this.senha = senha;
+        this.emprestimos = emprestimos;
         this.enderecos = enderecos;
     }
 
@@ -101,6 +102,14 @@ public class Pessoa {
         this.senha = senha;
     }
 
+    public List<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(List<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }
+
     public List<Endereco> getEnderecos() {
         return enderecos;
     }
@@ -116,14 +125,12 @@ public class Pessoa {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
-        return idPessoa == pessoa.idPessoa && Objects.equals(nome, pessoa.nome) && Objects.equals(email, pessoa.email) && Objects.equals(cpf, pessoa.cpf) && Objects.equals(rg, pessoa.rg) && Objects.equals(renda, pessoa.renda) && Objects.equals(senha, pessoa.senha) && Objects.equals(enderecos, pessoa.enderecos);
+        return idPessoa == pessoa.idPessoa && Objects.equals(nome, pessoa.nome) && Objects.equals(email, pessoa.email) && Objects.equals(cpf, pessoa.cpf) && Objects.equals(rg, pessoa.rg) && Objects.equals(renda, pessoa.renda) && Objects.equals(senha, pessoa.senha) && Objects.equals(emprestimos, pessoa.emprestimos) && Objects.equals(enderecos, pessoa.enderecos);
     }
 
-    /**
-     * hashCode da classe*/
     @Override
     public int hashCode() {
-        return Objects.hash(idPessoa, nome, email, cpf, rg, renda, senha, enderecos);
+        return Objects.hash(idPessoa, nome, email, cpf, rg, renda, senha, emprestimos, enderecos);
     }
 
     /**
@@ -138,6 +145,7 @@ public class Pessoa {
                 ", rg='" + rg + '\'' +
                 ", renda=" + renda +
                 ", senha='" + senha + '\'' +
+                ", emprestimos=" + emprestimos +
                 ", enderecos=" + enderecos +
                 '}';
     }

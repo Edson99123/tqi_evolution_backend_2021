@@ -19,7 +19,7 @@ public class Emprestimo {
 
     @ManyToOne
     @JoinColumn(name = "idPessoa")
-    private Pessoa pessoa;
+    private Pessoa pessoaEmprestimo;
 
     @OneToMany(mappedBy =  "emprestimo")
     private List<ParcelasEmprestimo> parcelasEmprestimos = new ArrayList<>();
@@ -34,18 +34,18 @@ public class Emprestimo {
 
     /**
      *Construtor com argumentos  */
-    public Emprestimo(Long idEmprestimo, Double valorEmprestimo,
-                      Date dataPrimeiraParcela, int quantidadeParcelas,
-                      List<ParcelasEmprestimo> parcelasEmprestimos) {
+    public Emprestimo(Long idEmprestimo, Double valorEmprestimo, Date dataPrimeiraParcela, int quantidadeParcelas, Pessoa pessoaEmprestimo, List<ParcelasEmprestimo> parcelasEmprestimos) {
         this.idEmprestimo = idEmprestimo;
         this.valorEmprestimo = valorEmprestimo;
         this.dataPrimeiraParcela = dataPrimeiraParcela;
         this.quantidadeParcelas = quantidadeParcelas;
+        this.pessoaEmprestimo = pessoaEmprestimo;
         this.parcelasEmprestimos = parcelasEmprestimos;
     }
 
     /**
      *Getters and Setters da classe*/
+
     public Long getIdEmprestimo() {
         return idEmprestimo;
     }
@@ -78,6 +78,14 @@ public class Emprestimo {
         this.quantidadeParcelas = quantidadeParcelas;
     }
 
+    public Pessoa getPessoa() {
+        return pessoaEmprestimo;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoaEmprestimo = pessoa;
+    }
+
     public List<ParcelasEmprestimo> getParcelasEmprestimos() {
         return parcelasEmprestimos;
     }
@@ -93,14 +101,12 @@ public class Emprestimo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Emprestimo that = (Emprestimo) o;
-        return quantidadeParcelas == that.quantidadeParcelas && Objects.equals(idEmprestimo, that.idEmprestimo) && Objects.equals(valorEmprestimo, that.valorEmprestimo) && Objects.equals(dataPrimeiraParcela, that.dataPrimeiraParcela) && Objects.equals(parcelasEmprestimos, that.parcelasEmprestimos);
+        return quantidadeParcelas == that.quantidadeParcelas && Objects.equals(idEmprestimo, that.idEmprestimo) && Objects.equals(valorEmprestimo, that.valorEmprestimo) && Objects.equals(dataPrimeiraParcela, that.dataPrimeiraParcela) && Objects.equals(pessoaEmprestimo, that.pessoaEmprestimo) && Objects.equals(parcelasEmprestimos, that.parcelasEmprestimos);
     }
 
-    /**
-     *hashCode da classe*/
     @Override
     public int hashCode() {
-        return Objects.hash(idEmprestimo, valorEmprestimo, dataPrimeiraParcela, quantidadeParcelas, parcelasEmprestimos);
+        return Objects.hash(idEmprestimo, valorEmprestimo, dataPrimeiraParcela, quantidadeParcelas, pessoaEmprestimo, parcelasEmprestimos);
     }
 
     /**
@@ -112,6 +118,7 @@ public class Emprestimo {
                 ", valorEmprestimo=" + valorEmprestimo +
                 ", dataPrimeiraParcela=" + dataPrimeiraParcela +
                 ", quantidadeParcelas=" + quantidadeParcelas +
+                ", pessoa=" + pessoaEmprestimo +
                 ", parcelasEmprestimos=" + parcelasEmprestimos +
                 '}';
     }
