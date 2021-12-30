@@ -41,5 +41,4 @@ public class PessoaResource {
         return ResponseEntity.created(uri).body(obj);
     }
 
-
 }
