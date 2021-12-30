@@ -99,7 +99,10 @@ public class Endereco {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Endereco endereco = (Endereco) o;
-        return numero == endereco.numero && Objects.equals(idEndereco, endereco.idEndereco) && Objects.equals(uf, endereco.uf) && Objects.equals(cidade, endereco.cidade) && Objects.equals(bairro, endereco.bairro) && Objects.equals(rua, endereco.rua) && Objects.equals(pessoaEndereco, endereco.pessoaEndereco);
+        return numero == endereco.numero && Objects.equals(idEndereco, endereco.idEndereco)
+                && Objects.equals(uf, endereco.uf) && Objects.equals(cidade, endereco.cidade)
+                && Objects.equals(bairro, endereco.bairro) && Objects.equals(rua, endereco.rua)
+                && Objects.equals(pessoaEndereco, endereco.pessoaEndereco);
     }
 
     @Override
