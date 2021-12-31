@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/pessoas")
+@RequestMapping(value = "/parcelaemprestimos")
 public class ParcelaEmprestimoResource {
 
     /**
