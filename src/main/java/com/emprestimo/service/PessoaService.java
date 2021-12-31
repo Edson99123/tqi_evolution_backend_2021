@@ -15,10 +15,14 @@ public class PessoaService {
     @Autowired
     private PessoaRepository  repository;
 
+    /**
+     * get all*/
     public List<Pessoa> findAll(){
         return repository.findAll();
     }
 
+    /**
+     * get por id*/
     public Pessoa findById(Long id){
         Optional<Pessoa> obj = repository.findById(id);
         return obj.get();
@@ -30,6 +34,27 @@ public class PessoaService {
         return repository.save(obj);
     }
 
+    /**
+     * Delete*/
+    public void delete(Long id){
+        repository.deleteById(id);
+    }
 
+    /**
+     * update*/
+    public Pessoa update(Long id, Pessoa obj){
+        Pessoa entity = repository.getOne(id);
+        updateData(entity, obj);
+        return repository.save(entity);
+    }
+
+
+    private void updateData(Pessoa entity, Pessoa obj) {
+        entity.setNome(obj.getNome());
+        entity.setEmail(obj.getEmail());
+        entity.setCpf(obj.getCpf());
+        entity.setRg(obj.getRg());
+        entity.setRenda(obj.getRenda());
+    }
 
 }

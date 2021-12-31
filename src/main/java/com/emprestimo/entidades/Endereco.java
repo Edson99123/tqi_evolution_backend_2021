@@ -38,6 +38,10 @@ public class Endereco {
         this.pessoaEndereco = pessoaEndereco;
     }
 
+    /**
+     * Construtor com argumentos*/
+
+
     public Long getIdEndereco() {
         return idEndereco;
     }
@@ -86,12 +90,12 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public Pessoa getPessoa() {
+    public Pessoa getPessoaEndereco() {
         return pessoaEndereco;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoaEndereco = pessoa;
+    public void setPessoaEndereco(Pessoa pessoaEndereco) {
+        this.pessoaEndereco = pessoaEndereco;
     }
 
     @Override

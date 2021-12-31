@@ -76,7 +76,8 @@ public class ParcelasEmprestimo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ParcelasEmprestimo that = (ParcelasEmprestimo) o;
-        return Objects.equals(idParcela, that.idParcela) && Objects.equals(dataVencimento, that.dataVencimento) && Objects.equals(observacao, that.observacao) && Objects.equals(emprestimo, that.emprestimo);
+        return Objects.equals(idParcela, that.idParcela) && Objects.equals(dataVencimento, that.dataVencimento)
+                && Objects.equals(observacao, that.observacao) && Objects.equals(emprestimo, that.emprestimo);
     }
 
     /**
