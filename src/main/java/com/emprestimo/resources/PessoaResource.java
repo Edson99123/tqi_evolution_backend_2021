@@ -1,5 +1,6 @@
 package com.emprestimo.resources;
 
+import com.emprestimo.dto.PessoaDTO;
 import com.emprestimo.entidades.Pessoa;
 import com.emprestimo.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,9 @@ public class PessoaResource {
     /**
      *Listar todas as pessoas*/
     @GetMapping
-    public ResponseEntity<List<Pessoa>> findAll(){
-        List<Pessoa> List = service.findAll();
-        return ResponseEntity.ok().body(List);
+    public ResponseEntity<List<PessoaDTO>> findAll(){
+        List<PessoaDTO> pessoaDTOS = service.findAll();
+        return ResponseEntity.ok().body(pessoaDTOS);
     }
 
     @GetMapping(value = "/{id}")
@@ -52,4 +53,6 @@ public class PessoaResource {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }
+
+
 }

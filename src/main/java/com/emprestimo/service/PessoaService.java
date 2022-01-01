@@ -1,6 +1,7 @@
 package com.emprestimo.service;
 
 
+import com.emprestimo.dto.PessoaDTO;
 import com.emprestimo.entidades.Pessoa;
 import com.emprestimo.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,9 @@ public class PessoaService {
 
     /**
      * get all*/
-    public List<Pessoa> findAll(){
-        return repository.findAll();
+    public List<PessoaDTO> findAll(){
+        List<Pessoa> pessoas = repository.findAll();
+        return PessoaDTO.convert(pessoas);// repository.findAll();
     }
 
     /**
