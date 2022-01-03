@@ -1,7 +1,6 @@
 package com.emprestimo.service;
 
 import com.emprestimo.entidades.Emprestimo;
-import com.emprestimo.entidades.Pessoa;
 import com.emprestimo.repository.EmprestimoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +23,10 @@ public class EmprestimoService {
         return obj.get();
     }
 
+
+
     /**
-     *Metodo insert de pessoa*/
+     *Metodo insert de emprestimo*/
     public Emprestimo insert(Emprestimo obj){
         return repository.save(obj);
     }
@@ -51,7 +52,6 @@ public class EmprestimoService {
         entity.setQuantidadeParcelas(obj.getQuantidadeParcelas());
         entity.setPessoa(obj.getPessoa());
     }
-
 
 
 }

@@ -8,7 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.net.URI;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 @RestController
@@ -32,6 +37,30 @@ public class PessoaResource {
     public ResponseEntity<Pessoa> findById(@PathVariable Long id){
         Pessoa obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @PostMapping(value = "/login")
+    public void logar(String email, String senha){
+        String sql = "select * from tb_pessoa a where a.email = ? and a.senha= ?";
+        Connection conexao = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try{
+            pst =  conexao.prepareStatement(sql);
+            pst.setString(1, email);
+            pst.setString(2, senha);
+            // Queru executada
+            rs = pst.executeQuery();
+
+            if (rs.next()){
+                System.out.println("Usuario logado");
+            }else{
+                System.out.println("Usuario não encontrado");
+            }
+
+        } catch (Exception e){
+
+        }
     }
 
     @PostMapping

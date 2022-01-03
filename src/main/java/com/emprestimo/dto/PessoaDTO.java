@@ -14,7 +14,6 @@ public class PessoaDTO {
     private String cpf;
     private Double renda;
 
-
     public PessoaDTO() {
 
     }

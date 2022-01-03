@@ -22,12 +22,14 @@ public class EmprestimoResource {
     private EmprestimoService service;
 
     /**
-     *Listar todas as pessoas*/
+     *Listar os emprestimos*/
     @GetMapping
     public ResponseEntity<List<Emprestimo>> findAll(){
         List<Emprestimo> List = service.findAll();
         return ResponseEntity.ok().body(List);
     }
+
+
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Emprestimo> findById(@PathVariable Long id){
@@ -35,8 +37,12 @@ public class EmprestimoResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    /**
+     * iii. Solicitação de empréstimo
+     *     Para solicitar um empréstimo, precisamos do valor do empréstimo, data da primeira parcela e quantidade de parcelas.
+     *     O máximo de parcelas será 60 e a data da primeira parcela deve ser no máximo 3 meses após o dia atual.*/
     @PostMapping
-    public ResponseEntity<Emprestimo> insert(@RequestBody Emprestimo obj){
+    public ResponseEntity<Emprestimo> insert( @RequestBody Emprestimo obj){
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
                 .buildAndExpand(obj.getIdEmprestimo()).toUri();

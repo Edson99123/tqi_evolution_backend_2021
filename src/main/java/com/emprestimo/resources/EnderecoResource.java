@@ -20,7 +20,7 @@ public class EnderecoResource {
     private EnderecoService service;
 
     /**
-     *Listar todas as pessoas*/
+     *Listar endereçõs*/
     @GetMapping
     public ResponseEntity<List<Endereco>> findAll(){
         List<Endereco> List = service.findAll();

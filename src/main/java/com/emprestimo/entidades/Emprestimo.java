@@ -14,7 +14,7 @@ public class Emprestimo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmprestimo;
     private Double valorEmprestimo;
-    private Date dataPrimeiraParcela;
+    private String dataPrimeiraParcela;
     private int quantidadeParcelas;
 
     @ManyToOne
@@ -34,7 +34,7 @@ public class Emprestimo {
 
     /**
      *Construtor com argumentos  */
-    public Emprestimo(Long idEmprestimo, Double valorEmprestimo, Date dataPrimeiraParcela, int quantidadeParcelas, Pessoa pessoaEmprestimo, List<ParcelasEmprestimo> parcelasEmprestimos) {
+    public Emprestimo(Long idEmprestimo, Double valorEmprestimo, String dataPrimeiraParcela, int quantidadeParcelas, Pessoa pessoaEmprestimo, List<ParcelasEmprestimo> parcelasEmprestimos) {
         this.idEmprestimo = idEmprestimo;
         this.valorEmprestimo = valorEmprestimo;
         this.dataPrimeiraParcela = dataPrimeiraParcela;
@@ -62,11 +62,11 @@ public class Emprestimo {
         this.valorEmprestimo = valorEmprestimo;
     }
 
-    public Date getDataPrimeiraParcela() {
+    public String getDataPrimeiraParcela() {
         return dataPrimeiraParcela;
     }
 
-    public void setDataPrimeiraParcela(Date dataPrimeiraParcela) {
+    public void setDataPrimeiraParcela(String dataPrimeiraParcela) {
         this.dataPrimeiraParcela = dataPrimeiraParcela;
     }
 
